@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>知乎日报</title>
+  <!-- <link rel="stylesheet" href="./css/style.css"> -->
+</head>
+
+<body>
+  <div id="list-wrap"></div>
+  <br>
+  <button id="page-btn">下一页</button>
+</body>
+
+<script src="./js/jquery-3.6.0.min.js"></script>
+<script>
+  var getlist = function (data) {
+    $.get('./data/' + data, function (result) {
+      result.stories.forEach(item => {
+        $('#list-wrap').append(`
+          <div class="list">
+            <img src="${item.images[0]}" />
+            <a href="/detail.html">
+              <h5>${item.title}</h5>
+            </a>
+            <hr />
+          </div>
+        `)
+      })
+    })
+  }
+
+  $(document).ready(function () {
+    // 显示第一页
+    getlist('list-data-page-1.json')
+
+    $('#page-btn').on('click', function () {
+      // 清空当前页面
+      $('#list-wrap').html('')
+
+      // 切换页面以及更换按钮文字
+      if ($(this).text() === '下一页') {
+        $(this).text('上一页')
+        getlist('list-data-page-2.json')
+      } else {
+        $(this).text('下一页')
+        getlist('list-data-page-1.json')
+      }
+    })
+  })
+</script>
+
+</html>

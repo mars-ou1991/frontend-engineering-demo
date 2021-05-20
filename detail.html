@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>知乎日报</title>
+</head>
+
+<body>
+  <div class="content-wrap"></div>
+</body>
+
+<script src="./js/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(
+    $.get('./data/detail-data.json', function (result) {
+      $('.content-wrap').html(`
+        <div class="detail">
+          <img src="${result.image}" />
+          <h1>${result.title}</h1>
+          <p>${result.body}</p>
+        </div>
+      `)
+
+    })
+  )
+</script>
+
+</html>
