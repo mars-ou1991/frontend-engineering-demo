@@ -9,23 +9,35 @@
 </head>
 
 <body>
-  <div class="content-wrap"></div>
+  <div class="content-wrap">
+    <div class="detail">
+      <img :src="result.image" />
+      <h1>{{result.title}}</h1>
+      <p v-html="result.body"></p>
+    </div>
+  </div>
 </body>
 
 <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+<script src="./node_modules/vue/dist/vue.js"></script>
 <script>
-  $(document).ready(
-    $.get('./data/detail-data.json', function (result) {
-      $('.content-wrap').html(`
-        <div class="detail">
-          <img src="${result.image}" />
-          <h1>${result.title}</h1>
-          <p>${result.body}</p>
-        </div>
-      `)
-
-    })
-  )
+  const vm = new Vue({
+    data() {
+      return {
+        result: {}
+      }
+    },
+    created() {
+      this.getDetail()
+    },
+    methods: {
+      getDetail() {
+        $.get('./data/detail-data.json', (result) => {
+          this.result = result
+        })
+      }
+    },
+  }).$mount('.content-wrap')
 </script>
 
 </html>
