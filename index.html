@@ -6,29 +6,99 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>知乎日报</title>
+  <style>
+    @keyframes fold-left-in {
+      0% {
+        transform: translate3d(100%, 0, 0);
+      }
+
+      100% {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    @keyframes fold-left-out {
+      0% {
+        transform: translate3d(0, 0, 0);
+      }
+
+      100% {
+        transform: translate3d(-100%, 0, 0);
+      }
+    }
+
+    @keyframes fold-right-in {
+      0% {
+        transform: translate3d(-100%, 0, 0);
+      }
+
+      100% {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    @keyframes fold-right-out {
+      0% {
+        transform: translate3d(0, 0, 0);
+      }
+
+      100% {
+        transform: translate3d(100%, 0, 0);
+      }
+    }
+
+    .fold-left-enter-active {
+      animation-name: fold-left-in;
+      animation-duration: .5s;
+    }
+
+    .fold-left-leave-active {
+      animation-name: fold-left-out;
+      animation-duration: .5s;
+    }
+
+    .fold-right-enter-active {
+      animation-name: fold-right-in;
+      animation-duration: .5s;
+    }
+
+    .fold-right-leave-active {
+      animation-name: fold-right-out;
+      animation-duration: .5s;
+    }
+  </style>
 </head>
 
 <body>
   <div id="list-wrap">
-    <div class="list" v-for="item in listData" :key="item.id">
-      <img :src="item.images[0]" />
-      <a href="/detail.html">
-        <h5>{{item.title}}</h5>
-      </a>
-      <hr />
-    </div>
-
-    <br>
-    <button id="page-btn" @click="getlist(page === '1' ? '2' : '1')">
-      {{ page === '1' ? '下一页' : '上一页' }}
-    </button>
+    <transition :name="transitionName">
+      <router-view></router-view>
+    </transition>
   </div>
 </body>
 
 <script src="./node_modules/jquery/dist/jquery.min.js"></script>
 <script src="./node_modules/vue/dist/vue.js"></script>
+<script src="./node_modules/vue-router/dist/vue-router.js"></script>
 <script>
-  const vm = new Vue({
+
+  const List = Vue.component('list', {
+    template: `
+    <div>
+      <div class="list" v-for="item in listData" :key="item.id">
+        <img :src="item.images[0]" />
+        <router-link to="/list/detail">
+          <h5>{{item.title}}</h5>
+        </router-link>
+        <hr />
+      </div>
+
+      <br>
+      <button id="page-btn" @click="getlist(page === '1' ? '2' : '1')">
+        {{ page === '1' ? '下一页' : '上一页' }}
+      </button>
+    </div>
+    `,
     data() {
       return {
         listData: [],
@@ -45,6 +115,58 @@
           this.listData = result.stories
           this.page = data
         })
+      }
+    }
+  })
+
+  const Detail = Vue.component('detail', {
+    template: `
+    <div class="detail">
+      <img :src="result.image" />
+      <h1>{{result.title}}</h1>
+      <p v-html="result.body"></p>
+    </div>
+    `,
+    data() {
+      return {
+        result: {}
+      }
+    },
+    created() {
+      this.getDetail()
+    },
+    methods: {
+      getDetail() {
+        $.get('./data/detail-data.json', (result) => {
+          this.result = result
+        })
+      }
+    }
+  })
+
+  const router = new VueRouter({
+    routes: [
+      {
+        path: '/list', component: List
+      },
+      {
+        path: '/list/detail', component: Detail
+      }
+    ]
+  })
+
+  const vm = new Vue({
+    router: router,
+    data() {
+      return {
+        transitionName: 'fold-left'
+      }
+    },
+    watch: {
+      '$route'(to, from) {
+        const toDepth = to.path.split('/').length
+        const fromDepth = from.path.split('/').length
+        this.transitionName = toDepth < fromDepth ? 'fold-right' : 'fold-left'
       }
     }
   }).$mount('#list-wrap')
