@@ -1,0 +1,77 @@
+{
+  "date": "20200617",
+  "stories": [
+    {
+      "image_hue": "0x25170d",
+      "title": "目前中国有哪些亚文化？",
+      "url": "https://daily.zhihu.com/story/9724961",
+      "hint": "兰陵 · 18 分钟阅读",
+      "ga_prefix": "061707",
+      "images": [
+        "https://pic1.zhimg.com/v2-a22dce7fb4c5f859e4d5130830b6bacc.jpg"
+      ],
+      "type": 0,
+      "id": 9724961
+    },
+    {
+      "image_hue": "0x97826a",
+      "title": "考古的时候会不会挖到化粪池？",
+      "url": "https://daily.zhihu.com/story/9724963",
+      "hint": "赵学浩 · 1 分钟阅读",
+      "ga_prefix": "061707",
+      "images": [
+        "https://pic4.zhimg.com/v2-81a1196c71265c13e7a57c59be651aff.jpg"
+      ],
+      "type": 0,
+      "id": 9724963
+    },
+    {
+      "image_hue": "0x353535",
+      "title": "国内的无障碍设施究竟如何？",
+      "url": "https://daily.zhihu.com/story/9724975",
+      "hint": "蔡勇斌 · 4 分钟阅读",
+      "ga_prefix": "061707",
+      "images": [
+        "https://pic2.zhimg.com/v2-6f070d188b45ee3ed73a66119398d669.jpg"
+      ],
+      "type": 0,
+      "id": 9724975
+    },
+    {
+      "image_hue": "0x464d8a",
+      "title": "「球状闪电」这种现象是如何发生的，具备哪些特点？",
+      "url": "https://daily.zhihu.com/story/9724984",
+      "hint": "鱼刺 · 12 分钟阅读",
+      "ga_prefix": "061707",
+      "images": [
+        "https://pic2.zhimg.com/v2-e3ac60ee8afd84412bc84ac16e3a44a9.jpg"
+      ],
+      "type": 0,
+      "id": 9724984
+    },
+    {
+      "image_hue": "0x476652",
+      "title": "为什么 CPU 流水线设计的级越长，完成的速度就越快？",
+      "url": "https://daily.zhihu.com/story/9724973",
+      "hint": "木头龙 · 2 分钟阅读",
+      "ga_prefix": "061707",
+      "images": [
+        "https://pic1.zhimg.com/v2-211dc74bae24525d0753ccadb81e72c8.jpg"
+      ],
+      "type": 0,
+      "id": 9724973
+    },
+    {
+      "image_hue": "0x382729",
+      "title": "瞎扯 · 如何正确地吐槽",
+      "url": "https://daily.zhihu.com/story/9724956",
+      "hint": "VOL.2421",
+      "ga_prefix": "061706",
+      "images": [
+        "https://pic4.zhimg.com/v2-e403f1f7756fadba85c5a4266d10a373.jpg"
+      ],
+      "type": 0,
+      "id": 9724956
+    }
+  ]
+}
