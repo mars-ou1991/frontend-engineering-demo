@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "homepage": "https://mars-ou1991.github.io/frontend-engineering-demo/#/list",
   "scripts": {
     "build": "eslint js && jest && webpack"
   },
