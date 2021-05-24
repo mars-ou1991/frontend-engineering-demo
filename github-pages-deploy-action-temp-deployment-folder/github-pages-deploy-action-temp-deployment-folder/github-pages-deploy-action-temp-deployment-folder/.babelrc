@@ -1,0 +1,5 @@
+// Babeljs 官方提供的预设
+// @babel/preset-env for compiling ES2015+ syntax
+{
+  "presets": ["env"]
+}
