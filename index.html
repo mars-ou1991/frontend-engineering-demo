@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>知乎日报</title>
+  <style>
+    @keyframes fold-left-in {
+      0% {
+        transform: translate3d(100%, 0, 0);
+      }
+
+      100% {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    @keyframes fold-left-out {
+      0% {
+        transform: translate3d(0, 0, 0);
+      }
+
+      100% {
+        transform: translate3d(-100%, 0, 0);
+      }
+    }
+
+    @keyframes fold-right-in {
+      0% {
+        transform: translate3d(-100%, 0, 0);
+      }
+
+      100% {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    @keyframes fold-right-out {
+      0% {
+        transform: translate3d(0, 0, 0);
+      }
+
+      100% {
+        transform: translate3d(100%, 0, 0);
+      }
+    }
+
+    .fold-left-enter-active {
+      animation-name: fold-left-in;
+      animation-duration: .5s;
+    }
+
+    .fold-left-leave-active {
+      animation-name: fold-left-out;
+      animation-duration: .5s;
+    }
+
+    .fold-right-enter-active {
+      animation-name: fold-right-in;
+      animation-duration: .5s;
+    }
+
+    .fold-right-leave-active {
+      animation-name: fold-right-out;
+      animation-duration: .5s;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="list-wrap">
+    <transition :name="transitionName">
+      <router-view></router-view>
+    </transition>
+  </div>
+</body>
+
+<script src="./dist/main.js"></script>
+
+</html>
