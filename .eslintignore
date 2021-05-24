@@ -3,3 +3,4 @@
 .eslintrc.js
 webpack.config.js
 dist/*
+*.test.js
