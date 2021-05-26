@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import router from './router/index'
 Vue.use(VueRouter)
 
-new Vue({
+const a = new Vue({
   router: router,
   data() {
     return {
