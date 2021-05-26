@@ -4,6 +4,7 @@ import $ from 'jquery'
 export default Vue.component('list', {
   template: `
   <div>
+    <h1>12345678</h1>
     <div class="list" v-for="item in listData" :key="item.id">
       <img :src="item.images[0]" />
       <router-link to="/list/detail">
